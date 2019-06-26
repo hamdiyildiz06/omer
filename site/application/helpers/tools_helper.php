@@ -27,7 +27,6 @@ function get_product_cover_image($product_id){
 
 }
 
-
 function get_readable_date($date){
 
     setlocale(LC_ALL, 'tr_TR.UTF-8');
@@ -136,7 +135,6 @@ function send_email($toEmail = "", $subject = "", $message = ""){
 
 }
 
-
 function get_picture($path = "", $picture = "", $resolution = "50x50"){
 
 
@@ -146,11 +144,9 @@ function get_picture($path = "", $picture = "", $resolution = "50x50"){
             $picture = base_url("panel/uploads/$path/$resolution/$picture");
         } else {
             $picture = base_url("assets/images/default_image_$resolution.png");
-
         }
 
     } else {
-
 
         //construction-service-1.jpg
         $picture = base_url("assets/images/default_image_$resolution.png");
@@ -162,22 +158,15 @@ function get_picture($path = "", $picture = "", $resolution = "50x50"){
 }
 
 function get_gallery_cover_image($folderName){
-
     $path = "panel/uploads/galleries_v/images/$folderName/350x216";
-
     if($handle = opendir($path)){
         while(($file = readdir($handle)) !== false){
 
             if($file != "." & $file != ".."){
                 return $file;
             }
-
         }
-
-
     }
-
-
 }
 
 function get_popup_service($page = ""){

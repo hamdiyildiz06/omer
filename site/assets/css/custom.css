@@ -18,3 +18,34 @@ File Description: Place here your custom CSS styles
         margin: 30px auto;
     }
 }
+
+.next-mac-title{
+    text-decoration: none !important;
+    text-align: center;
+
+ }
+
+.next-mac-contend span{
+    padding: 0 3px !important;
+    color: #929599;
+}
+
+.next-mac-contend span i{
+    margin: 0 7px !important;
+}
+
+.skorr {
+    font-weight: bold !important;
+    font-size: 44px !important;
+    color: #0070a0 !important;
+}
+
+.skorr-1 {
+    font-weight: bold !important;
+    font-size: 24px !important;
+    color: #0070a0 !important;
+}
+
+.oz-bg {
+    background: #333333;
+}

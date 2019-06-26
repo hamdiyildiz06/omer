@@ -221,6 +221,7 @@ class Brands extends HY_Controller
                 $image_350x216 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",350,216, $file_name);
 
                 if($image_350x216){
+                    delete_picture("brand_model", $id, "350x216");
 
                     $data = array(
                         "title" => $this->input->post("title"),
@@ -298,6 +299,7 @@ class Brands extends HY_Controller
     }
 
     public function delete($id){
+        delete_picture("brand_model", $id, "350x216");
 
         if (!isAllowedDeleteModule())
         {

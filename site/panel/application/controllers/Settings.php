@@ -272,11 +272,19 @@ class Settings extends HY_Controller
             // Masaüstü Logosu için Upload Süreci...
             if($_FILES["logo"]["name"] !== "") {
 
+                $fileName = $this->settings_model->get(
+                    array(
+                        "id"    => $id
+                    )
+                );
+                unlink("uploads/settings_v/150x35/{$fileName->logo}");
+
                 $file_name = convertToSEO($this->input->post("company_name")) . "." . pathinfo($_FILES["logo"]["name"], PATHINFO_EXTENSION);
 
                 $image_150x35 = upload_picture($_FILES["logo"]["tmp_name"], "uploads/$this->viewFolder",150,35, $file_name);
 
                 if($image_150x35){
+
 
                     $data["logo"] = $file_name;
 
@@ -300,6 +308,13 @@ class Settings extends HY_Controller
 
             // Mobil Logosu için Upload Süreci...
             if($_FILES["mobile_logo"]["name"] !== "") {
+                $fileName = $this->settings_model->get(
+                    array(
+                        "id"    => $id
+                    )
+                );
+                unlink("uploads/settings_v/300x70/{$fileName->mobile_logo}");
+
 
                 $file_name = convertToSEO($this->input->post("company_name")) . "." . pathinfo($_FILES["mobile_logo"]["name"], PATHINFO_EXTENSION);
 
@@ -329,6 +344,12 @@ class Settings extends HY_Controller
 
             // Favicon için Upload Süreci...
             if($_FILES["favicon"]["name"] !== "") {
+                $fileName = $this->settings_model->get(
+                    array(
+                        "id"    => $id
+                    )
+                );
+                unlink("uploads/settings_v/32x32/{$fileName->favicon}");
 
                 $file_name = convertToSEO($this->input->post("company_name")) . "." . pathinfo($_FILES["favicon"]["name"], PATHINFO_EXTENSION);
 

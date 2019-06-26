@@ -20,9 +20,6 @@
                     <thead>
                         <th class="w50">#id</th>
                         <th>E-posta Başlık</th>
-                        <th>Sunucu Adı</th>
-                        <th>Protokol</th>
-                        <th>Port</th>
                         <th>E-posta</th>
                         <th>Kimden</th>
                         <th>Kime</th>
@@ -36,9 +33,6 @@
                             <tr>
                                 <td class="w50 text-center">#<?php echo $item->id; ?></td>
                                 <td class="text-center"><?php echo $item->user_name; ?></td>
-                                <td class="text-center"><?php echo $item->host; ?></td>
-                                <td class="text-center"><?php echo $item->protocol; ?></td>
-                                <td class="text-center"><?php echo $item->port; ?></td>
                                 <td class="text-center"><?php echo $item->user; ?></td>
                                 <td class="text-center"><?php echo $item->from; ?></td>
                                 <td class="text-center"><?php echo $item->to; ?></td>

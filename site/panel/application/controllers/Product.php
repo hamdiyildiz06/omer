@@ -280,7 +280,9 @@ class Product extends HY_Controller
         // TODO Alert Sistemi Eklenecek...
         if($delete){
 
-            unlink("uploads/{$this->viewFolder}/$fileName->img_url");
+//            unlink("uploads/{$this->viewFolder}/$fileName->img_url");
+            unlink("uploads/product_v/348x215/{$fileName->img_url}");
+            unlink("uploads/product_v/1080x426/{$fileName->img_url}");
 
             redirect(base_url("product/image_form/$parent_id"));
         } else {

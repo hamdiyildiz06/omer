@@ -180,7 +180,6 @@ class Testimonials extends HY_Controller
 
     }
 
-
     public function update($id){
 
         $this->load->library("form_validation");
@@ -212,6 +211,7 @@ class Testimonials extends HY_Controller
                 $image_90x90 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",90,90, $file_name);
 
                 if($image_90x90){
+                    delete_picture("testimonial_model", $id, "90x90");
 
                     $data = array(
                         "title"         => $this->input->post("title"),
@@ -295,7 +295,7 @@ class Testimonials extends HY_Controller
     }
 
     public function delete($id){
-
+        delete_picture("testimonial_model", $id, "90x90");
         $delete = $this->testimonial_model->delete(
             array(
                 "id"    => $id

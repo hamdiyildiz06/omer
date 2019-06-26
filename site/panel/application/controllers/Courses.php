@@ -209,6 +209,8 @@ class Courses extends HY_Controller
                 $image_1140x705 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",1140,705, $file_name);
 
                 if($image_255x157 && $image_1140x705){
+                    delete_picture("course_model", $id, "255x157");
+                    delete_picture("course_model", $id, "1140x705");
 
                     $data = array(
                         "title" => $this->input->post("title"),
@@ -292,6 +294,8 @@ class Courses extends HY_Controller
     }
 
     public function delete($id){
+        delete_picture("course_model", $id, "255x157");
+        delete_picture("course_model", $id, "1140x705");
 
         $delete = $this->course_model->delete(
             array(

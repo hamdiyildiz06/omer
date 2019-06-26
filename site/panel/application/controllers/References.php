@@ -178,7 +178,6 @@ class References extends HY_Controller
 
     }
 
-
     public function update($id){
 
         $this->load->library("form_validation");
@@ -207,6 +206,8 @@ class References extends HY_Controller
                 $image_555x343 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",555,343, $file_name);
 
                 if($image_80x80 && $image_555x343){
+                    delete_picture("reference_model", $id, "80x80");
+                    delete_picture("reference_model", $id, "555x343");
 
                     $data = array(
                         "title" => $this->input->post("title"),
@@ -288,6 +289,9 @@ class References extends HY_Controller
     }
 
     public function delete($id){
+
+        delete_picture("reference_model", $id, "80x80");
+        delete_picture("reference_model", $id, "555x343");
 
         $delete = $this->reference_model->delete(
             array(

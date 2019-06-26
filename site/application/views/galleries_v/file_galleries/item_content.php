@@ -27,7 +27,7 @@
                                         <td style="width:100px;">
                                             <a target="_blank"
                                                href="<?php echo base_url("panel/uploads/galleries_v/files/$gallery->folder_name/$file->url"); ?>"
-                                               download="VideoSınıf-<?php echo $file->url; ?>"
+                                               download="YildizTurk-<?php echo $file->url; ?>"
                                                class="btn btn-animated btn-default">İndir<i class="pl-10 fa fa-download"></i></a>
                                         </td>
                                     </tr>

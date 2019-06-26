@@ -301,15 +301,17 @@ class Portfolio extends HY_Controller
                 "id"    => $id
             )
         );
-
-
         // TODO Alert Sistemi Eklenecek...
         if($delete){
-
-            unlink("uploads/{$this->viewFolder}/$fileName->img_url");
+//          unlink("uploads/{$this->viewFolder}/$fileName->img_url");
+             unlink("uploads/portfolio_v/255x157/{$fileName->img_url}");
+             unlink("uploads/portfolio_v/276x171/{$fileName->img_url}");
+             unlink("uploads/portfolio_v/352x171/{$fileName->img_url}");
+             unlink("uploads/portfolio_v/1080x426/{$fileName->img_url}");
 
             redirect(base_url("portfolio/image_form/$parent_id"));
         } else {
+
             redirect(base_url("portfolio/image_form/$parent_id"));
         }
 

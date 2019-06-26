@@ -14,7 +14,8 @@
 
                             <?php
                                 $image = get_product_cover_image($product->id);
-                                $image = ($image) ? base_url("panel/uploads/product_v/$image") : base_url("assets/images/portfolio-1.jpg");
+//                                $image = ($image) ? base_url("panel/uploads/product_v/$image") : base_url("assets/images/portfolio-1.jpg");
+                                $image = get_picture("product_v", $image, "348x215");
                             ?>
 
                             <img src="<?php echo $image; ?>" alt="<?php echo $product->title; ?>">

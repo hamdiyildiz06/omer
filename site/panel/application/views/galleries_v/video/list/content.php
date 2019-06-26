@@ -36,12 +36,11 @@
                                 <td class="text-center w100">
                                     <iframe
                                         width="200"
-                                        src="<?php echo $item->url; ?>"
+                                        src="<iframe width='560' height='315' src='https://www.youtube.com/embed/<?php echo $item->url; ?>' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"
                                         frameborder="0"
                                         gesture="media"
                                         allow="encrypted-media"
                                         allowfullscreen>
-
                                     </iframe>
                                 </td>
                                 <td class="text-center w100">

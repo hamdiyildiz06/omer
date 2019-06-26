@@ -177,7 +177,6 @@ class Services extends HY_Controller
 
     }
 
-
     public function update($id){
 
         $this->load->library("form_validation");
@@ -206,6 +205,9 @@ class Services extends HY_Controller
                 $image_350x217 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",350,217, $file_name);
 
                 if($image_555x343 && $image_350x217){
+
+                    delete_picture("service_model", $id, "350x217");
+                    delete_picture("service_model", $id, "555x343");
 
                     $data = array(
                         "title" => $this->input->post("title"),
@@ -287,6 +289,8 @@ class Services extends HY_Controller
     }
 
     public function delete($id){
+        delete_picture("service_model", $id, "350x217");
+        delete_picture("service_model", $id, "555x343");
 
         $delete = $this->service_model->delete(
             array(

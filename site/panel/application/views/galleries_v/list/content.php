@@ -24,8 +24,8 @@
                         <th>Galeri Türü</th>
                         <th>Klasör Adı</th>
                         <th>url</th>
-                        <th>Durumu</th>
-                        <th>İşlem</th>
+                        <th class="w100">Durumu</th>
+                        <th class="w300">İşlem</th>
                     </thead>
                     <tbody class="sortable" data-url="<?php echo base_url("galleries/rankSetter"); ?>">
 

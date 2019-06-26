@@ -68,8 +68,12 @@ class Galleries extends HY_Controller
         if($validate){
 
             $gallery_type = $this->input->post("gallery_type");
-            $path         = "uploads/$this->viewFolder/";
+            $path         = "uploads/$this->viewFolder";
             $folder_name = "";
+
+
+
+
 
             if($gallery_type == "image"){
 
@@ -81,7 +85,6 @@ class Galleries extends HY_Controller
                 $folder_name = convertToSEO($this->input->post("title"));
                 $path = "$path/files/$folder_name";
             }
-
 
             if($gallery_type != "video"){
 
@@ -565,12 +568,17 @@ class Galleries extends HY_Controller
 
     public function fileDelete($id, $parent_id, $gallery_type){
 
-
         $modelName = ($gallery_type == "image") ? "image_model" : "file_model";
 
-        $fileName = $this->$modelName->get(
+        $folder = $this->gallery_model->get(
             array(
-                "id"    => $id
+                "id"    => $parent_id
+            )
+        );
+
+        $imageName =  $this->$modelName->get(
+            array(
+                "id" => $id
             )
         );
 
@@ -582,9 +590,21 @@ class Galleries extends HY_Controller
 
         // TODO Alert Sistemi Eklenecek...
         if($delete){
-            unlink($fileName->url);
+            if ($gallery_type == "image"){
+
+                unlink("uploads/galleries_v/images/{$folder->folder_name}/252x156/{$imageName->url}");
+                unlink("uploads/galleries_v/images/{$folder->folder_name}/350x216/{$imageName->url}");
+                unlink("uploads/galleries_v/images/{$folder->folder_name}/851x606/{$imageName->url}");
+
+            }elseif ($gallery_type == "file"){
+
+                unlink("uploads/galleries_v/files/{$folder->folder_name}/{$imageName->url}");
+
+            }
+
             redirect(base_url("galleries/upload_form/$parent_id"));
         } else {
+
             redirect(base_url("galleries/upload_form/$parent_id"));
         }
 

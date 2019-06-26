@@ -186,7 +186,6 @@ class Slides extends HY_Controller
 
     }
 
-
     public function update($id){
 
         $this->load->library("form_validation");
@@ -220,6 +219,7 @@ class Slides extends HY_Controller
                 $image_1920x650 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",1920,650, $file_name);
 
                 if($image_1920x650){
+                    delete_picture("slide_model", $id, "1920x650");
 
                     $data = array(
                         "title" => $this->input->post("title"),
@@ -305,6 +305,7 @@ class Slides extends HY_Controller
     }
 
     public function delete($id){
+        delete_picture("slide_model", $id, "1920x650");
 
         $delete = $this->slide_model->delete(
             array(
@@ -334,7 +335,6 @@ class Slides extends HY_Controller
 
         $this->session->set_flashdata("alert", $alert);
         redirect(base_url("slides"));
-
 
     }
 

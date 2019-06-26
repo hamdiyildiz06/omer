@@ -249,7 +249,8 @@ class News extends HY_Controller
                     $image_730x411 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",730,411, $file_name);
 
                     if($image_513x289 && $image_730x411){
-
+                        delete_picture("news_model", $id, "255x157");
+                        delete_picture("news_model", $id, "1140x705");
                         $data = array(
                             "title" => $this->input->post("title"),
                             "description" => $this->input->post("description"),
@@ -346,6 +347,8 @@ class News extends HY_Controller
     }
 
     public function delete($id){
+        delete_picture("news_model", $id, "255x157");
+        delete_picture("news_model", $id, "1140x705");
 
         $delete = $this->news_model->delete(
             array(

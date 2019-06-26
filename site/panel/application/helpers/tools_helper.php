@@ -225,7 +225,18 @@ function get_picture($path = "", $picture = "", $resolution = "50x50"){
 
 }
 
-function get_page_list($page){
+function delete_picture($model,$id,$resolution){
+    $t = get_instance();
+    $fileName =  $t->$model->get(
+        array(
+            "id" => $id
+        )
+    );
+
+    return unlink("uploads/{$t->viewFolder}/{$resolution}/{$fileName->img_url}");
+}
+
+function get_page_list($page = ""){
 
     $page_list = array(
         "home_v"                => "Anasayfa",
