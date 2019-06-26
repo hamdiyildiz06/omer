@@ -29,7 +29,7 @@
                         <div id="logo" class="logo">
                             <a href="<?php echo base_url(); ?>">
                                 <img id="logo_img"
-                                     src="<?php echo get_picture("settings_v", $settings->logo, "150x35"); ?>"
+                                     src="<?php echo get_picture("settings_v", $settings->logo, "200x75"); ?>"
                                      alt="<?php echo $settings->company_name; ?>">
                             </a>
                         </div>
@@ -81,7 +81,7 @@
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
 
-                                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                                <div class="collapse navbar-collapse" id="navbar-collapse-1" style="height: 90px">
                                     <!-- main-menu -->
 
                                     <ul class="navbar-nav ml-xl-auto">

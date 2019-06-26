@@ -37,7 +37,7 @@
 <!-- Use css/rtl_typography-default.css for RTL version -->
 <link href="<?php echo base_url("assets");?>/css/typography-default.css" rel="stylesheet" >
 <!-- Color Scheme (In order to change the color scheme, replace the blue.css with the color scheme that you prefer)-->
-<link href="<?php echo base_url("assets");?>/css/skins/purple.css" rel="stylesheet">
+<link href="<?php echo base_url("assets");?>/css/skins/vivid_red.css" rel="stylesheet">
 
 
 <!-- Custom css -->

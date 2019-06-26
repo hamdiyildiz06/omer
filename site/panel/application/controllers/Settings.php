@@ -125,11 +125,11 @@ class Settings extends HY_Controller
 
             $file_name = convertToSEO($this->input->post("company_name")) . "." . pathinfo($_FILES["logo"]["name"], PATHINFO_EXTENSION);
 
-            $image_150x35 = upload_picture($_FILES["logo"]["tmp_name"], "uploads/$this->viewFolder",150,35, $file_name);
-            $image_300x70 = upload_picture($_FILES["mobile_logo"]["tmp_name"], "uploads/$this->viewFolder",300,70, $file_name);
+            $image_200x75 = upload_picture($_FILES["logo"]["tmp_name"], "uploads/$this->viewFolder",200,75, $file_name);
+            $image_200x74 = upload_picture($_FILES["mobile_logo"]["tmp_name"], "uploads/$this->viewFolder",200,74, $file_name);
             $image_32x32  = upload_picture($_FILES["favicon"]["tmp_name"], "uploads/$this->viewFolder",32,32, $file_name);
 
-            if($image_150x35 && $image_300x70 && $image_32x32){
+            if($image_200x75 && $image_200x74 && $image_32x32){
 
                 $insert = $this->settings_model->add(
                     array(
@@ -277,13 +277,13 @@ class Settings extends HY_Controller
                         "id"    => $id
                     )
                 );
-                unlink("uploads/settings_v/150x35/{$fileName->logo}");
+                unlink("uploads/settings_v/200x75/{$fileName->logo}");
 
                 $file_name = convertToSEO($this->input->post("company_name")) . "." . pathinfo($_FILES["logo"]["name"], PATHINFO_EXTENSION);
 
-                $image_150x35 = upload_picture($_FILES["logo"]["tmp_name"], "uploads/$this->viewFolder",150,35, $file_name);
+                $image_200x75 = upload_picture($_FILES["logo"]["tmp_name"], "uploads/$this->viewFolder",200,75, $file_name);
 
-                if($image_150x35){
+                if($image_200x75){
 
 
                     $data["logo"] = $file_name;
@@ -313,14 +313,14 @@ class Settings extends HY_Controller
                         "id"    => $id
                     )
                 );
-                unlink("uploads/settings_v/300x70/{$fileName->mobile_logo}");
+                unlink("uploads/settings_v/200x74/{$fileName->mobile_logo}");
 
 
                 $file_name = convertToSEO($this->input->post("company_name")) . "." . pathinfo($_FILES["mobile_logo"]["name"], PATHINFO_EXTENSION);
 
-                $image_300x70 = upload_picture($_FILES["mobile_logo"]["tmp_name"], "uploads/$this->viewFolder",300,70, $file_name);
+                $image_200x74 = upload_picture($_FILES["mobile_logo"]["tmp_name"], "uploads/$this->viewFolder",200,74, $file_name);
 
-                if($image_300x70){
+                if($image_200x74){
 
                     $data["mobile_logo"] = $file_name;
 
