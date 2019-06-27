@@ -54,14 +54,14 @@
             <ul class="app-menu">
 
 
-                <?php if (isAllowedViewModule("dashboard")){ ?>
+
                      <li>
                         <a href="<?php echo base_url("dashboard"); ?>">
                             <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
                             <span class="menu-text">Dashboard</span>
                         </a>
                     </li>
-                <?php } ?>
+
 
                 <?php if (isAllowedViewModule("settings")){ ?>
                     <li>
@@ -133,6 +133,28 @@
                             <li>
                                 <a href="<?php echo base_url("portfolio"); ?>">
                                     <span class="menu-text">Portfolyo</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } ?>
+
+                <?php if (isAllowedViewModule("football_categories") || isAllowedViewModule("football")){ ?>
+                    <li class="has-submenu">
+                        <a href="javascript:void(0)" class="submenu-toggle">
+                            <i class="menu-icon fa fa-asterisk"></i>
+                            <span class="menu-text">Futbol İşlemleri</span>
+                            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="<?php echo base_url("football_categories"); ?>">
+                                    <span class="menu-text">Futbol Kategorileri</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url("football"); ?>">
+                                    <span class="menu-text">futboll</span>
                                 </a>
                             </li>
                         </ul>
@@ -220,14 +242,14 @@
                     </li>
                 <?php } ?>
 
-                <?php if (isAllowedViewModule("dashboard")){ ?>
+
                     <li>
-                        <a href="documentation.html">
+                        <a target="_blank" href="http://localhost/codeigniter/omer/site/">
                             <i class="menu-icon zmdi zmdi-view-web zmdi-hc-lg"></i>
                             <span class="menu-text">Ana Sayfa</span>
                         </a>
                     </li>
-                <?php } ?>
+
             </ul><!-- .app-menu -->
         </div><!-- .menubar-scroll-inner -->
     </div><!-- .menubar-scroll -->

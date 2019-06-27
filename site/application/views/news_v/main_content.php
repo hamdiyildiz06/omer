@@ -36,7 +36,7 @@
 
 
             <p>
-                <?php echo strip_tags($news->description); ?>
+                <?php echo nl2br($news->description); ?>
             </p>
         </div>
         <footer class="clearfix">

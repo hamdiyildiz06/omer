@@ -65,7 +65,7 @@
                             <div class="main col-md-8">
                                 <h1 class="title"><?php echo $portfolio->title; ?></h1>
                                 <div class="separator-2"></div>
-                                <p><?php echo strip_tags($portfolio->description); ?></p>
+                                <p><?php echo nl2br($portfolio->description); ?></p>
                             </div>
                             <!-- main end -->
 
@@ -75,11 +75,13 @@
                                         <h3 class="title">Portfolyo Detayları</h3>
                                         <div class="separator-2"></div>
                                         <ul class="list margin-clear">
-                                            <li><strong>Müşteri: </strong> <span class="text-right"><?php echo $portfolio->client; ?></span></li>
+                                            <li><strong>Ekleyen: </strong> <span class="text-right"><?php echo $portfolio->client; ?></span></li>
                                             <li><strong>Tarih: </strong> <span class="text-right"><?php echo get_readable_date($portfolio->finishedAt); ?></span></li>
                                             <li><strong>Kategori: </strong> <span class="text-right"><?php echo get_portfolio_category_title($portfolio->category_id); ?></span></li>
-                                            <li><strong>Place: </strong> <span class="text-right"><?php echo $portfolio->place; ?></span></li>
-                                            <li><strong>URL: </strong> <span class="text-right"><a href="<?php echo $portfolio->portfolio_url; ?>"><?php echo $portfolio->portfolio_url; ?></a></span></li>
+                                            <li><strong>Yer: </strong> <span class="text-right"><?php echo $portfolio->place; ?></span></li>
+                                            <?php if ( $portfolio->portfolio_url) { ?>
+                                                <li><strong>URL: </strong> <span class="text-right"><a href="<?php echo $portfolio->portfolio_url; ?>"><?php echo $portfolio->portfolio_url; ?></a></span></li>
+                                            <?php } ?>
                                         </ul>
                                     </div>
                                 </div>

@@ -49,3 +49,12 @@ File Description: Place here your custom CSS styles
 .oz-bg {
     background: #333333;
 }
+
+.btn-sm {
+    margin: 26px 0 !important;
+}
+
+
+.header-dropdown-buttons {
+    padding-top: 0px !important;
+}

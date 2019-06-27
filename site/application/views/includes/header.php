@@ -64,7 +64,7 @@
 
                                         <?php //$this->agent->is_mobile() ?>
 
-                                            <img id="logo-img-mobile" src="<?php echo get_picture("settings_v",$settings->mobile_logo, "150x35"); ?>"
+                                            <img id="logo-img-mobile" src="<?php echo get_picture("settings_v",$settings->mobile_logo, "200x74"); ?>"
                                                  alt="<?php echo $settings->company_name; ?>">
 
                                         </a>
