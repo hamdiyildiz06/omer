@@ -1,5 +1,5 @@
 <?php
-
+ $settings = get_settings();
 
 echo "<pre>";
 
