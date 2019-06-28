@@ -170,6 +170,25 @@ function get_category_title($category_id = 0){
 
 }
 
+function get_football_title($category_id = 0){
+
+    $t = &get_instance();
+
+    $t->load->model("football_category_model");
+
+    $category = $t->football_category_model->get(
+        array(
+            "id"    => $category_id
+        )
+    );
+
+    if($category)
+        return $category->title;
+    else
+        return "<b>Tanımlı Değil</b>";
+
+}
+
 function upload_picture($file, $uploadPath, $width, $height, $name){
 
     $t = &get_instance();
