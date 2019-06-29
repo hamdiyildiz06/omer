@@ -21,7 +21,7 @@
                 <table class="table table-hover table-striped table-bordered content-container">
                     <thead>
                         <th class="w50">#id</th>
-                        <th>Başlık</th>
+                        <th>Kategori Başlık</th>
                         <th>Durumu</th>
                         <th>İşlem</th>
                     </thead>
@@ -31,7 +31,7 @@
 
                             <tr>
                                 <td class="w50 text-center">#<?php echo $item->id; ?></td>
-                                <td><?php echo $item->title; ?></td>
+                                <td><a href="<?= base_url("football/category/{$item->id}"); ?>"><?php echo $item->title; ?></a></td>
                                 <td class="text-center w100">
                                     <input
                                         data-url="<?php echo base_url("football_categories/isActiveSetter/$item->id"); ?>"

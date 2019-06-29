@@ -22,7 +22,8 @@
                     <thead>
                         <th class="order"><i class="fa fa-reorder"></i></th>
                         <th class="w50">#id</th>
-                        <th>Başlık</th>
+                        <th>Ad ve Soyat</th>
+                        <th>Kategori</th>
                         <th>Tarih</th>
                         <th>Mevki</th>
                         <th>Görsel</th>
@@ -37,6 +38,11 @@
                                 <td class="order"><i class="fa fa-reorder"></i></td>
                                 <td class="w50 text-center">#<?php echo $item->id; ?></td>
                                 <td><?php echo $item->title; ?></td>
+                                <td class="text-center">
+                                    <a href="<?= base_url("football/category/$item->category_id"); ?>">
+                                        <?php echo get_football_title($item->id); ?>
+                                    </a>
+                                </td>
                                 <td class="w200 text-center"><?php echo get_readable_date($item->event_date); ?></td>
                                 <td class="w200 text-center"><?php echo $item->mevki; ?></td>
                                 <td class="text-center w100">

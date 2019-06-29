@@ -139,25 +139,12 @@
                     </li>
                 <?php } ?>
 
-                <?php if (isAllowedViewModule("football_categories") || isAllowedViewModule("football")){ ?>
-                    <li class="has-submenu">
-                        <a href="javascript:void(0)" class="submenu-toggle">
-                            <i class="menu-icon fa fa-asterisk"></i>
-                            <span class="menu-text">Futbol İşlemleri</span>
-                            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+                <?php if (isAllowedViewModule("football_categories")){ ?>
+                    <li>
+                        <a href="<?php echo base_url("football_categories"); ?>">
+                            <i class="menu-icon fa fa-newspaper-o"></i>
+                            <span class="menu-text">Futbol Kategorisi</span>
                         </a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="<?php echo base_url("football_categories"); ?>">
-                                    <span class="menu-text">Futbol Kategorileri</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo base_url("football"); ?>">
-                                    <span class="menu-text">futboll</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 <?php } ?>
 

@@ -162,8 +162,10 @@ class Home extends CI_Controller {
             array(
                 "isActive"  => 1,
                 "id !="     => $viewData->portfolio->id
-            ), "rand()", array("start" => 0, "count" => 3)
+            ), "rand()", array("count"   => 3, "start"   => 0 )
         );
+
+
 
         $this->load->view($viewData->viewFolder, $viewData);
 

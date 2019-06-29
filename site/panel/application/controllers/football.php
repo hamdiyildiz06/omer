@@ -37,6 +37,39 @@ class Football extends HY_Controller
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
     }
 
+    public function category($id=""){
+
+        $viewData = new stdClass();
+
+        if (!is_numeric($id)){
+
+            $alert = array(
+                "title" => "İşlem Başarısız",
+                "text" => "Yanlış bir konumdasınız, Lütfen tekrar deneyiniz",
+                "type" => "error"
+            );
+
+            $this->session->set_flashdata("alert", $alert);
+            redirect(base_url("football"));
+            die();
+
+        }
+
+        /** Tablodan Verilerin Getirilmesi.. */
+        $items = $this->football_model->get_all(
+            array(
+                "category_id" => $id
+            ), "rank ASC"
+        );
+
+        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "list";
+        $viewData->items = $items;
+
+        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+    }
+
     public function new_form(){
         $viewData = new stdClass();
 
