@@ -27,7 +27,7 @@ class Home extends CI_Controller {
         $slides = $this->slide_model->get_all(
             array(
                 "isActive"  => 1
-            ), "rank ASC"
+            ), "rank ASC", array("count"   => 10, "start"   => 0 )
         );
 
         $references = $this->reference_model->get_all(
@@ -39,13 +39,13 @@ class Home extends CI_Controller {
         $services = $this->service_model->get_all(
             array(
                 "isActive"  => 1
-            ), "rank ASC"
+            ), "rank ASC", array("count"   => 3, "start"   => 0 )
         );
 
         $portfolios = $this->portfolio_model->get_all(
             array(
                 "isActive"  => 1
-            ), "rank ASC"
+            ), "rank ASC", array("count"   => 4, "start"   => 0 )
         );
 
         $testimonials = $this->testimonial_model->get_all(
