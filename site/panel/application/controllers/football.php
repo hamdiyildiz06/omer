@@ -114,9 +114,10 @@ class Football extends HY_Controller
         $this->form_validation->set_rules("size", "Boy", "required|trim");
         $this->form_validation->set_rules("weight", "Kilo", "required|trim");
         $this->form_validation->set_rules("event_date", "Dogum Tarihi", "required|trim");
-        $this->form_validation->set_rules("facebook", "facebook", "required|trim");
-        $this->form_validation->set_rules("twitter", "twitter", "required|trim");
-        $this->form_validation->set_rules("youtube", "youtube", "required|trim");
+//        $this->form_validation->set_rules("facebook", "facebook", "required|trim");
+//        $this->form_validation->set_rules("twitter", "twitter", "required|trim");
+//        $this->form_validation->set_rules("youtube", "youtube", "required|trim");
+//        $this->form_validation->set_rules("instagram", "instagram", "required|trim");
 
 
         $this->form_validation->set_message(
@@ -252,9 +253,10 @@ class Football extends HY_Controller
         $this->form_validation->set_rules("size", "Boy", "required|trim");
         $this->form_validation->set_rules("weight", "Kilo", "required|trim");
         $this->form_validation->set_rules("event_date", "Dogum Tarihi", "required|trim");
-        $this->form_validation->set_rules("facebook", "facebook", "required|trim");
-        $this->form_validation->set_rules("twitter", "twitter", "required|trim");
-        $this->form_validation->set_rules("youtube", "youtube", "required|trim");
+//        $this->form_validation->set_rules("facebook", "facebook", "required|trim");
+//        $this->form_validation->set_rules("twitter", "twitter", "required|trim");
+//        $this->form_validation->set_rules("youtube", "youtube", "required|trim");
+//        $this->form_validation->set_rules("instagram", "instagram", "required|trim");
 
         $this->form_validation->set_message(
             array(

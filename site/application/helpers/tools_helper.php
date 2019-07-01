@@ -108,7 +108,7 @@ function get_football_categoris($lig = ""){
         );
     }
 
-    return (empty($lig)) ? $football_categoris: $football_categoris->id;
+    return $football_categoris;
 }
 
 function send_email($toEmail = "", $subject = "", $message = ""){

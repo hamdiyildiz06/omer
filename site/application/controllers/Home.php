@@ -107,16 +107,17 @@ class Home extends CI_Controller {
     public function football_category($lig){
 
         $viewData = new stdClass();
-        $cat_id = get_football_categoris();
+        $viewData->cat = get_football_categoris($lig);
+
         $viewData->viewFolder = "football_category_v";
         $viewData->subViewFolder = "item_content";
 
-        $this->load->model("football_category_model");
+        $this->load->model("Football_model");
 
-        $viewData->ligs = $this->football_category_model->get_all(
+        $viewData->items = $this->Football_model->get_all(
             array(
                 "isActive"  => 1,
-                "title" => $lig
+                "category_id" => $viewData->cat->id
             )
         );
 

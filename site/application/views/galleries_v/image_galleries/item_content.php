@@ -10,6 +10,8 @@
 
                 <div class="row grid-space-20">
 
+
+
                     <?php if(!empty($images)) { ?>
 
                         <?php foreach ($images as $image) { ?>
