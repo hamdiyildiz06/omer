@@ -1,4 +1,9 @@
-<?php $settings = get_settings(); ?>
+<?php
+
+    $settings = get_settings();
+    $football_categoris = get_football_categoris();
+
+?>
 
 <div class="header-container">
     <!-- header-top start -->
@@ -110,9 +115,18 @@
                                             </ul>
                                         </li>
 
-
-                                        <li class="nav-item ">
-                                            <a href="<?php echo base_url("urun-listesi"); ?>" class="nav-link">Ürünlerimiz</a>
+                                        <li class="nav-item dropdown ">
+                                            <a href="<?= base_url("futbol-listesi"); ?>" class="nav-link dropdown-toggle" id="third-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Futbol</a>
+                                            <ul class="dropdown-menu" aria-labelledby="third-dropdown">
+                                                <li>
+                                                    <a href="<?php echo base_url("futbol-kategori"); ?>">Tüm Kategori</a>
+                                                </li>
+                                                <?php foreach ($football_categoris as $football_category){ ?>
+                                                    <li>
+                                                        <a href="<?php echo base_url("futbol-kategori/{$football_category->title}"); ?>"><?= $football_category->title; ?></a>
+                                                    </li>
+                                                <?php } ?>
+                                            </ul>
                                         </li>
 
                                         <li class="nav-item ">

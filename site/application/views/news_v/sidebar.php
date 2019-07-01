@@ -28,7 +28,7 @@
                                 <?php if($recent_news->news_type == "image") { ?>
 
                                     <div class="overlay-container">
-                                        <img class="media-object" src="<?php echo base_url("panel/uploads/news_v/$recent_news->img_url"); ?>" alt="<?php echo $recent_news->url; ?>">
+                                        <img class="media-object" src="<?php echo get_picture($viewFolder, $recent_news->img_url, "513x289"); ?>" alt="<?php echo $recent_news->url; ?>">
                                         <a href="<?php echo base_url("haber/$recent_news->url"); ?>" class="overlay-link small"><i class="fa fa-link"></i></a>
                                     </div>
 
@@ -42,8 +42,8 @@
 
                             </div>
                             <div class="media-body">
-                                <h6 class="media-heading"><a href="blog-post.html">Lorem ipsum dolor sit amet...</a></h6>
-                                <p class="small margin-clear"><i class="fa fa-calendar pr-2"></i>Mar 23, 2017</p>
+                                <h6 class="media-heading"><a href="<?= $recent_news->url; ?>"><?= $recent_news->title; ?></a></h6>
+                                <p class="small margin-clear"><i class="fa fa-calendar pr-2"></i><?php echo get_readable_date($recent_news->createdAt); ?></p>
                             </div>
                         </div>
                     </div>

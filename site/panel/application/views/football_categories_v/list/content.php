@@ -21,6 +21,7 @@
                 <table class="table table-hover table-striped table-bordered content-container">
                     <thead>
                         <th class="w50">#id</th>
+                        <th>Görsel</th>
                         <th>Kategori Başlık</th>
                         <th>Durumu</th>
                         <th>İşlem</th>
@@ -31,6 +32,11 @@
 
                             <tr>
                                 <td class="w50 text-center">#<?php echo $item->id; ?></td>
+                                <td class="text-center w100">
+                                    <img width="75"
+                                         src="<?php echo get_picture($viewFolder, $item->img_url, "730x411"); ?>"
+                                         alt="" class="img-rounded">
+                                </td>
                                 <td><a href="<?= base_url("football/category/{$item->id}"); ?>"><?php echo $item->title; ?></a></td>
                                 <td class="text-center w100">
                                     <input

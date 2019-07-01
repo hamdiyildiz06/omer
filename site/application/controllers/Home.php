@@ -85,6 +85,44 @@ class Home extends CI_Controller {
 
     }
 
+    /************** Football Category için kullanilan metodlar **************/
+    public function football_category_list(){
+
+        $viewData = new stdClass();
+        $viewData->viewFolder = "football_category_v";
+        $viewData->subViewFolder = "list_content";
+
+        $this->load->model("football_category_model");
+
+        $viewData->ligs = $this->football_category_model->get_all(
+            array(
+                "isActive"  => 1,
+            )
+        );
+
+        $this->load->view($viewData->viewFolder, $viewData);
+
+    }
+
+    public function football_category($lig){
+
+        $viewData = new stdClass();
+        $cat_id = get_football_categoris();
+        $viewData->viewFolder = "football_category_v";
+        $viewData->subViewFolder = "item_content";
+
+        $this->load->model("football_category_model");
+
+        $viewData->ligs = $this->football_category_model->get_all(
+            array(
+                "isActive"  => 1,
+                "title" => $lig
+            )
+        );
+
+        $this->load->view($viewData->viewFolder, $viewData);
+    }
+
     public function product_detail($url = ""){
 
         $viewData = new stdClass();

@@ -67,7 +67,7 @@ class Brands extends HY_Controller
 
             $alert = array(
                 "title" => "İşlem Başarısız",
-                "text" => "Lütfen bir görsel seçiniz",
+                "text"  => "Lütfen bir görsel seçiniz",
                 "type"  => "error"
             );
 

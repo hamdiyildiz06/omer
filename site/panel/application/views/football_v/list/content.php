@@ -40,7 +40,7 @@
                                 <td><?php echo $item->title; ?></td>
                                 <td class="text-center">
                                     <a href="<?= base_url("football/category/$item->category_id"); ?>">
-                                        <?php echo get_football_title($item->id); ?>
+                                        <?php echo get_football_title($item->category_id); ?>
                                     </a>
                                 </td>
                                 <td class="w200 text-center"><?php echo get_readable_date($item->event_date); ?></td>

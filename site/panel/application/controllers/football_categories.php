@@ -52,6 +52,23 @@ class Football_categories extends HY_Controller
 
         $this->load->library("form_validation");
 
+
+        if($_FILES["img_url"]["name"] == ""){
+
+            $alert = array(
+                "title" => "İşlem Başarısız",
+                "text"  => "Lütfen bir görsel seçiniz",
+                "type"  => "error"
+            );
+
+            // İşlemin Sonucunu Session'a yazma işlemi...
+            $this->session->set_flashdata("alert", $alert);
+
+            redirect(base_url("football_categories/new_form"));
+
+            die();
+        }
+
         // Kurallar yazilir..
 
         $this->form_validation->set_rules("title", "Başlık", "required|trim");
@@ -67,31 +84,53 @@ class Football_categories extends HY_Controller
 
         if($validate){
 
-            // Upload Süreci...
-            $insert = $this->football_category_model->add(
-                array(
-                    "title"         => $this->input->post("title"),
-                    "isActive"      => 1,
-                    "createdAt"     => date("Y-m-d H:i:s")
-                )
-            );
+            $file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
 
-            // TODO Alert sistemi eklenecek...
-            if($insert){
+            $image_730x411 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",730,411, $file_name);
 
-                $alert = array(
-                    "title" => "İşlem Başarılı",
-                    "text" => "Kayıt başarılı bir şekilde eklendi",
-                    "type"  => "success"
+            if($image_730x411){
+
+                $insert = $this->football_category_model->add(
+                    array(
+                        "title"         => $this->input->post("title"),
+                        "img_url"       => $file_name,
+                        "isActive"      => 1,
+                        "createdAt"     => date("Y-m-d H:i:s")
+                    )
                 );
+
+                // TODO Alert sistemi eklenecek...
+                if($insert){
+
+                    $alert = array(
+                        "title" => "İşlem Başarılı",
+                        "text" => "Kayıt başarılı bir şekilde eklendi",
+                        "type"  => "success"
+                    );
+
+                } else {
+
+                    $alert = array(
+                        "title" => "İşlem Başarısız",
+                        "text" => "Kayıt Ekleme sırasında bir problem oluştu",
+                        "type"  => "error"
+                    );
+                }
 
             } else {
 
                 $alert = array(
                     "title" => "İşlem Başarısız",
-                    "text" => "Kayıt Ekleme sırasında bir problem oluştu",
+                    "text" => "Görsel yüklenirken bir problem oluştu",
                     "type"  => "error"
                 );
+
+                $this->session->set_flashdata("alert", $alert);
+
+                redirect(base_url("football_categories/new_form"));
+
+                die();
+
             }
 
             // İşlemin Sonucunu Session'a yazma işlemi...
@@ -134,7 +173,6 @@ class Football_categories extends HY_Controller
 
     }
 
-
     public function update($id){
 
         $this->load->library("form_validation");
@@ -154,14 +192,46 @@ class Football_categories extends HY_Controller
 
         if($validate){
 
-            $update = $this->football_category_model->update(
-                array(
-                        "id" => $id
-                ),
-                array(
+            // Upload Süreci...
+            if($_FILES["img_url"]["name"] !== "") {
+
+                $file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
+
+                $image_730x411 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",730,411, $file_name);
+
+                if($image_730x411){
+                    delete_picture("football_category_model", $id, "730x411");
+
+                    $data = array(
+                        "title" => $this->input->post("title"),
+                        "img_url" => $file_name,
+                    );
+
+                } else {
+
+                    $alert = array(
+                        "title" => "İşlem Başarısız",
+                        "text" => "Görsel yüklenirken bir problem oluştu",
+                        "type" => "error"
+                    );
+
+                    $this->session->set_flashdata("alert", $alert);
+
+                    redirect(base_url("football_categories/update_form/$id"));
+
+                    die();
+
+                }
+
+            } else {
+
+                $data = array(
                     "title" => $this->input->post("title"),
-                )
-            );
+                );
+
+            }
+
+            $update = $this->football_category_model->update(array("id" => $id), $data);
 
             // TODO Alert sistemi eklenecek...
             if($update){
@@ -209,6 +279,7 @@ class Football_categories extends HY_Controller
 
     public function delete($id){
 
+        delete_picture("football_category_model", $id, "730x411");
         $delete = $this->football_category_model->delete(
             array(
                 "id"    => $id

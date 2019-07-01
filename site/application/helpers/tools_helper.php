@@ -82,17 +82,33 @@ function get_settings(){
 
     $t = &get_instance();
 
-//    $settings = $t->session->userdata("settings");
-//    if(empty($settings)){
-
+    $settings = $t->session->userdata("settings");
+    if(empty($settings)){
         $t->load->model("settings_model");
-
         $settings = $t->settings_model->get();
-
         $t->session->set_userdata("settings", $settings);
-//    }
+    }
 
     return $settings;
+}
+
+function get_football_categoris($lig = ""){
+
+    $t = &get_instance();
+
+    if (empty($lig)) {
+        $t->load->model("football_category_model");
+        $football_categoris = $t->football_category_model->get_all();
+    }else{
+        $t->load->model("football_category_model");
+        $football_categoris = $t->football_category_model->get(
+            array(
+                "title" => $lig
+            )
+        );
+    }
+
+    return (empty($lig)) ? $football_categoris: $football_categoris->id;
 }
 
 function send_email($toEmail = "", $subject = "", $message = ""){
