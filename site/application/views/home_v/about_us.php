@@ -29,33 +29,18 @@
 
                     <div class="col-lg-6">
                         <div class="owl-carousel content-slider-with-controls">
-                            <div class="overlay-container overlay-visible">
-                                <img src="<?php echo base_url("assets/images");?>/construction-1.jpg" alt="">
-                                <div class="overlay-bottom hidden-sm-down">
-                                    <div class="text">
-                                        <h3 class="title">We Create You Enjoy</h3>
+
+                            <?php foreach ($football_catogorys as $football_catogory ): ?>
+                                <div class="overlay-container overlay-visible">
+                                    <img src="<?= get_picture("football_categories_v",$football_catogory->img_url,"540x334") ?>" alt="anadolu balkan <?= $football_catogory->title; ?> takım kadrosu">
+                                    <div class="overlay-bottom hidden-sm-down">
+                                        <div class="text">
+                                            <h3 class="title"><?= $football_catogory->title ?> Takım Kadromuz</h3>
+                                        </div>
                                     </div>
+                                    <a href="<?= get_picture("football_categories_v",$football_catogory->img_url,"750x464") ?>" class="owl-carousel--popup-img overlay-link" title="<?= $football_catogory->title ?> Takım Kadromuz"><i class="icon-plus-1"></i></a>
                                 </div>
-                                <a href="<?php echo base_url("assets/images");?>/construction-1.jpg" class="owl-carousel--popup-img overlay-link" title="image title"><i class="icon-plus-1"></i></a>
-                            </div>
-                            <div class="overlay-container overlay-visible">
-                                <img src="<?php echo base_url("assets/images");?>/construction-2.jpg" alt="">
-                                <div class="overlay-bottom hidden-sm-down">
-                                    <div class="text">
-                                        <h3 class="title">You Can Trust Us</h3>
-                                    </div>
-                                </div>
-                                <a href="<?php echo base_url("assets/images");?>/construction-2.jpg" class="owl-carousel--popup-img overlay-link" title="image title"><i class="icon-plus-1"></i></a>
-                            </div>
-                            <div class="overlay-container overlay-visible">
-                                <img src="<?php echo base_url("assets/images");?>/construction-3.jpg" alt="">
-                                <div class="overlay-bottom hidden-sm-down">
-                                    <div class="text">
-                                        <h3 class="title">We Love What We Do</h3>
-                                    </div>
-                                </div>
-                                <a href="<?php echo base_url("assets/images");?>/construction-3.jpg" class="owl-carousel--popup-img overlay-link" title="image title"><i class="icon-plus-1"></i></a>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>

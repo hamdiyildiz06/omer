@@ -86,9 +86,11 @@ class Football_categories extends HY_Controller
 
             $file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
 
+            $image_540x334 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",540,334, $file_name);
             $image_730x411 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",730,411, $file_name);
+            $image_750x464 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",750,464, $file_name);
 
-            if($image_730x411){
+            if($image_730x411 && $image_540x334 && $image_750x464){
 
                 $insert = $this->football_category_model->add(
                     array(
@@ -197,10 +199,14 @@ class Football_categories extends HY_Controller
 
                 $file_name = convertToSEO(pathinfo($_FILES["img_url"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["img_url"]["name"], PATHINFO_EXTENSION);
 
+                $image_540x334 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",540,334, $file_name);
                 $image_730x411 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",730,411, $file_name);
+                $image_750x464 = upload_picture($_FILES["img_url"]["tmp_name"], "uploads/$this->viewFolder",750,464, $file_name);
 
                 if($image_730x411){
+                    delete_picture("football_category_model", $id, "540x334");
                     delete_picture("football_category_model", $id, "730x411");
+                    delete_picture("football_category_model", $id, "750x464");
 
                     $data = array(
                         "title" => $this->input->post("title"),
@@ -279,7 +285,9 @@ class Football_categories extends HY_Controller
 
     public function delete($id){
 
+        delete_picture("football_category_model", $id, "540x334");
         delete_picture("football_category_model", $id, "730x411");
+        delete_picture("football_category_model", $id, "750x464");
         $delete = $this->football_category_model->delete(
             array(
                 "id"    => $id

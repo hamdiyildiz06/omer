@@ -22,6 +22,9 @@ class Home extends CI_Controller {
         $this->load->model("reference_model");
         $this->load->model("service_model");
         $this->load->model("portfolio_model");
+        $this->load->model("football_category_model");
+        $this->load->model("football_model");
+        $this->load->model("Football_team_model");
         $this->load->model("testimonial_model");
 
         $slides = $this->slide_model->get_all(
@@ -48,6 +51,24 @@ class Home extends CI_Controller {
             ), "rank ASC", array("count"   => 4, "start"   => 0 )
         );
 
+        $football_catogory = $this->football_category_model->get_all(
+            array(
+                "isActive"  => 1
+            ), "rand()", array("count"   => 10, "start"   => 'RANDOM')
+        );
+
+        $football_players = $this->football_model->get_all(
+            array(
+                "isActive"  => 1
+            ), "rand()", array("count"   => 10, "start"   => 'RANDOM')
+        );
+
+        $football_teams = $this->football_model->get_all(
+            array(
+                "isActive"  => 1
+            ), "rand()", array("count"   => 3, "start"   => 'RANDOM')
+        );
+
         $testimonials = $this->testimonial_model->get_all(
             array(
                 "isActive"  => 1
@@ -55,12 +76,18 @@ class Home extends CI_Controller {
         );
 
 
-        $viewData->portfolios   = $portfolios;
-        $viewData->slides       = $slides;
-        $viewData->references   = $references;
-        $viewData->services     = $services;
-        $viewData->testimonials = $testimonials;
-        $viewData->viewFolder   = "home_v";
+        $viewData->portfolios          = $portfolios;
+        $viewData->football_catogorys  = $football_catogory;
+        $viewData->football_players    = $football_players;
+        $viewData->football_teams      = $football_teams;
+        $viewData->slides              = $slides;
+        $viewData->references          = $references;
+        $viewData->services            = $services;
+        $viewData->testimonials        = $testimonials;
+        $viewData->viewFolder          = "home_v";
+
+
+
 
         $this->load->view($viewData->viewFolder, $viewData);
 
@@ -108,6 +135,24 @@ class Home extends CI_Controller {
 
         $viewData = new stdClass();
         $viewData->cat = get_football_categoris($lig);
+
+        $viewData->viewFolder = "football_category_v";
+        $viewData->subViewFolder = "item_content";
+
+        $this->load->model("Football_model");
+
+        $viewData->items = $this->Football_model->get_all(
+            array(
+                "isActive"  => 1,
+                "category_id" => $viewData->cat->id
+            )
+        );
+
+        $this->load->view($viewData->viewFolder, $viewData);
+    }
+
+    public function football_players(){
+        $viewData = new stdClass();
 
         $viewData->viewFolder = "football_category_v";
         $viewData->subViewFolder = "item_content";

@@ -96,6 +96,9 @@ function get_football_categoris($lig = ""){
 
     $t = &get_instance();
 
+
+    $lig_sec = is_numeric($lig) ? "id" : "title";
+
     if (empty($lig)) {
         $t->load->model("football_category_model");
         $football_categoris = $t->football_category_model->get_all();
@@ -103,7 +106,7 @@ function get_football_categoris($lig = ""){
         $t->load->model("football_category_model");
         $football_categoris = $t->football_category_model->get(
             array(
-                "title" => $lig
+                $lig_sec => $lig
             )
         );
     }
