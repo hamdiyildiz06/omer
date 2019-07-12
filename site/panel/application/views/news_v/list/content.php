@@ -47,13 +47,14 @@
 
                                     <?php } else if($item->news_type == "video") { ?>
 
+
                                         <iframe
-                                            width="75"
-                                            src="<?php echo $item->video_url; ?>"
-                                            frameborder="0"
-                                            gesture="media"
-                                            allow="encrypted-media"
-                                            allowfullscreen>
+                                                width="150"
+                                                src="https://www.youtube.com/embed/<?php echo $item->video_url; ?>"
+                                                frameborder="0"
+                                                gesture="media"
+                                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen>
 
                                         </iframe>
 

@@ -39,7 +39,11 @@
                                 <?php } else { ?>
 
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<?php echo $news->video_url; ?>"></iframe>
+                                        <iframe
+                                                width="150"
+                                                src="https://www.youtube.com/embed/<?php echo $news->video_url; ?>"
+                                                allowfullscreen>
+                                        </iframe>
                                     </div>
 
                                 <?php } ?>
